@@ -14,6 +14,8 @@ export const appRouter = (app, express) => {
   }
 
   // cors
+
+  // add domain of your deployment
   const whitelist = [
     "http://127.0.0.1:5500",
     "https://e-commerce-eta-lovat.vercel.app/",
