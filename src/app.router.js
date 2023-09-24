@@ -15,27 +15,43 @@ export const appRouter = (app, express) => {
 
   // cors
 
-  // add domain of your deployment
-  const whitelist = [
-    "http://127.0.0.1:5500",
-    "https://e-commerce-eta-lovat.vercel.app/",
-  ];
+  // // add domain of your deployment
+  // const whitelist = [
+  //   "http://127.0.0.1:5500",
+  //   "https://e-commerce-eta-lovat.vercel.app/",
+  // ];
+  // app.use((req, res, next) => {
+  //   console.log(req.header("origin"));
+  //   // activate account api , not necessary if the front end will be the one to  send the confirmation request
+  //   if (req.originalUrl.includes("/auth/confirmEmail")) {
+  //     res.setHeader("Access-Control-Allow-Origin", "*");
+  //     res.setHeader("Access-Control-Allow-Methods", "GET");
+  //     return next();
+  //   }
+
+  //   if (!whitelist.includes(req.header("origin"))) {
+  //     return next(new Error("BLOCKED BY CORS"));
+  //   }
+  //   res.setHeader("Access-Control-Allow-Origin", "*");
+  //   res.setHeader("Access-Control-Allow-Headers", "*");
+  //   res.setHeader("Access-Control-Allow-Methods", "*");
+  //   res.setHeader("Access-Control-Allow-Private-Network", true); // usually fasle to prevent testing after deployment
+  //   return next();
+  // });
+  // cors middleware
   app.use((req, res, next) => {
-    console.log(req.header("origin"));
-    // activate account api , not necessary if the front end will be the one to  send the confirmation request
+    // Activate account API, not necessary if the front end will be the one to send the confirmation request
     if (req.originalUrl.includes("/auth/confirmEmail")) {
       res.setHeader("Access-Control-Allow-Origin", "*");
       res.setHeader("Access-Control-Allow-Methods", "GET");
       return next();
     }
 
-    if (!whitelist.includes(req.header("origin"))) {
-      return next(new Error("BLOCKED BY CORS"));
-    }
+    // Allow requests from any origin
     res.setHeader("Access-Control-Allow-Origin", "*");
     res.setHeader("Access-Control-Allow-Headers", "*");
     res.setHeader("Access-Control-Allow-Methods", "*");
-    res.setHeader("Access-Control-Allow-Private-Network", true); // usually fasle to prevent testing after deployment
+    res.setHeader("Access-Control-Allow-Private-Network", true); // Usually false to prevent testing after deployment
     return next();
   });
 
