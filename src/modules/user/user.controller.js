@@ -7,7 +7,6 @@ import { sendEmail } from "../../utils/sendEmail.js";
 import { resetPasswordTemp, signUpTemp } from "../../utils/generateHTML.js";
 import Randomstring from "randomstring";
 import pkg from "jsonwebtoken";
-import { send } from "process";
 import { Cart } from "../../../DB/models/cart.model.js";
 const jwt = pkg;
 // register
