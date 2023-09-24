@@ -14,7 +14,10 @@ export const appRouter = (app, express) => {
   }
 
   // cors
-  const whitelist = ["http://127.0.0.1:5500"];
+  const whitelist = [
+    "http://127.0.0.1:5500",
+    "https://your-vercel-app.vercel.app",
+  ];
   app.use((req, res, next) => {
     console.log(req.header("origin"));
     // activate account api , not necessary if the front end will be the one to  send the confirmation request
