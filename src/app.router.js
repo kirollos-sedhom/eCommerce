@@ -16,7 +16,7 @@ export const appRouter = (app, express) => {
   // cors
   const whitelist = [
     "http://127.0.0.1:5500",
-    "https://your-vercel-app.vercel.app",
+    "https://e-commerce-eta-lovat.vercel.app/",
   ];
   app.use((req, res, next) => {
     console.log(req.header("origin"));
